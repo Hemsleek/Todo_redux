@@ -21,7 +21,10 @@ const Todos = () => {
 }
 
 const FormInput = () => {
-  const handleSubmit = () => { }
+  const handleSubmit = () => {
+
+
+  }
 
   return (
     <form className="FormInput" onSubmit={handleSubmit}>

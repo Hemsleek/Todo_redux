@@ -23,11 +23,20 @@
   padding: 0.5rem 0.7rem;
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background ease-in-out 0.5s;
+}
+.todo:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
 }
 .todo img {
   width: 18px;
   height: 18px;
   cursor: pointer;
+  transition: transform linear 0.5s;
+}
+.todo img:hover {
+  transform: scale(1.2);
 }
 .FormInput {
   display: flex;
