@@ -1,18 +1,20 @@
+import { useSelector, useDispatch } from 'react-redux'
+import { addTodo, deleteTodo } from './store/actionCreators'
+import { generateId } from './utils'
+
 import './App.css';
 
 const Todos = () => {
-  const generateId = () => Math.random().toString(36).substr(2, 4)
-
-  const defaultTodos = [{ todo: 'Buy some milks', id: generateId(), done: false },
-  { todo: 'Cook some food', id: generateId(), done: false }
-  ]
+  const allTodos = useSelector(state => state)
+  console.log(allTodos)
+  const dispatch = useDispatch()
   return (
     <div className="Todos">
       {
-        defaultTodos.map(todo => (
+        allTodos.map(todo => (
           <div className="todo">
             <span>{todo.todo}</span>
-            <img src="/images/bin.svg" alt="delete" />
+            <img src="/images/bin.svg" alt="delete" onClick={() => dispatch(deleteTodo(todo.id))} />
           </div>
         ))
       }
@@ -21,15 +23,21 @@ const Todos = () => {
 }
 
 const FormInput = () => {
-  const handleSubmit = () => {
+  const dispatch = useDispatch()
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const todo = e.target.todo.value
+    const id = generateId()
+    dispatch(addTodo(id, todo))
+    e.target.reset()
 
   }
 
   return (
     <form className="FormInput" onSubmit={handleSubmit}>
       <span>Add a new todo:</span>
-      <input placeholder="Enter task and press Enter" type="text" />
+      <input name='todo' placeholder="Enter task and press Enter" type="text" />
     </form>
   )
 }

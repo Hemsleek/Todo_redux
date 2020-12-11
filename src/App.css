@@ -16,6 +16,8 @@
 }
 .Todos {
   margin-bottom: 2rem;
+  max-height: 40vh;
+  overflow-y: auto;
 }
 .todo {
   display: flex;

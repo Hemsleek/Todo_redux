@@ -1,4 +1,10 @@
-const reducer = (state = [], action) => {
+import { generateId } from '../utils'
+
+const defaultTodos = [{ todo: 'Buy some milks', id: generateId(), done: false },
+{ todo: 'Cook some food', id: generateId(), done: false }
+]
+
+const reducer = (state = defaultTodos, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             return state.concat({
