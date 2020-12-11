@@ -27,7 +27,8 @@ const FormInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const todo = e.target.todo.value
+    const todo = (e.target.todo.value).trim()
+    if (!todo) return null
     const id = generateId()
     dispatch(addTodo(id, todo))
     e.target.reset()
