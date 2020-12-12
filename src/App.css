@@ -36,6 +36,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   transition: background ease-in-out 0.5s;
 }
+.todo.done {
+  text-decoration: line-through;
+}
 .todo:hover {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.05);

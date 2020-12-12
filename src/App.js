@@ -1,18 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { addTodo, deleteTodo } from './store/actionCreators'
+import { addTodo, deleteTodo, todoDone } from './store/actionCreators'
 import { generateId } from './utils'
 
 import './App.css';
 
 const Todos = () => {
   const allTodos = useSelector(state => state)
-  console.log(allTodos)
+
   const dispatch = useDispatch()
   return (
     <div className="Todos">
       {
-        allTodos.map(todo => (
-          <div className="todo">
+        allTodos.map((todo, todoIndex) => (
+          <div className={`todo ${todo.done ? 'done' : ''}`} onClick={() => dispatch(todoDone(todo.id))} key={`todo_${todoIndex}`}>
             <span>{todo.todo}</span>
             <img src="/images/bin.svg" alt="delete" onClick={() => dispatch(deleteTodo(todo.id))} />
           </div>
