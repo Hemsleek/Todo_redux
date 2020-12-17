@@ -5,28 +5,32 @@ const defaultTodos = [{ todo: 'Buy some milks', id: generateId(), done: false },
 ]
 
 const reducer = (state = defaultTodos, action) => {
+    let result
+
     switch (action.type) {
         case 'ADD_TODO':
-            return state.concat({
+            result = state.concat({
                 todo: action.payload.todo,
                 id: action.payload.id,
                 done: false
             })
             break;
         case 'DELETE_TODO':
-            return state.filter(todo => todo.id !== action.payload.id)
+            result = state.filter(todo => todo.id !== action.payload.id)
             break;
 
         case 'TODO_DONE':
-            return state.map(todo => {
+            result = state.map(todo => {
                 if (todo.id === action.payload.id) todo.done = !todo.done
                 return todo
             })
             break;
         default:
-            return state;
+            result = state;
             break;
     }
+
+    return result
 }
 
 export default reducer

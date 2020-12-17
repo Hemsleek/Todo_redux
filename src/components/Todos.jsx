@@ -10,7 +10,8 @@ function Todos() {
       <div className="Todos">
         {
           allTodos.map((todo, todoIndex) => (
-            <div className={`todo ${todo.done ? 'done' : ''}`} onClick={() => dispatch(todoDone(todo.id))} key={`todo_${todoIndex}`}>
+            <div className={`todo ${todo.done ? 'done' : ''}`}
+             onClick={() => dispatch(todoDone(todo.id))} key={`todo_${todoIndex}`}>
               <span>{todo.todo}</span>
               <img src="/images/bin.svg" alt="delete" onClick={() => dispatch(deleteTodo(todo.id))} />
             </div>
